@@ -28,6 +28,8 @@ def main():
 					print("You guessed correctly!\n")
 				elif guessrpl == 2:
 					print('You did not guessed right :< Try again!\n')
+				elif guessrpl == 3:
+					print('You choose already this letter! Try another one.')
 				print("Guess the word! You have",attempts,"attempts left\n")
 				print("\nLetters already used: ", letters,"\n")
 				print("Word to guess:")
@@ -37,7 +39,7 @@ def main():
 					letters.append(attempt)
 					break
 				else:
-					input("You choose already this letter! Try another one. Press key to continue")
+					guessrpl = 3
 			if attempt in word:
 				guessrpl=1
 				for x in range (0, wordlen):
