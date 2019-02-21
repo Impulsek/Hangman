@@ -16,30 +16,47 @@ def main():
 		word=contents[rnd]
 		wordlen=len(word)
 		guess=[]
+		letters=[]
 		for character in word:
 			guess.append("-")
+		guessrpl=0 #0 for first round, after that 1-correct, 2-incorrect
+		attempt="" #variable with input character
 		while attempts>0:
-			os.system('cls')
-			print("Guess the word! You have",attempts,"attempts left\n")
-			print (guess)
-			attempt=input("\nYour type:")
+			while True:
+				os.system('cls')
+				if guessrpl == 1:
+					print("You guessed correctly!\n")
+				elif guessrpl == 2:
+					print('You did not guessed right :< Try again!\n')
+				print("Guess the word! You have",attempts,"attempts left\n")
+				print("\nLetters already used: ", letters,"\n")
+				print("Word to guess:")
+				print (guess)
+				attempt=input("\nYour type:")
+				if attempt not in letters:
+					letters.append(attempt)
+					break
+				else:
+					input("You choose already this letter! Try another one. Press key to continue")
 			if attempt in word:
-				print("You guessed correctly!\n")
+				guessrpl=1
 				for x in range (0, wordlen):
 					if word[x]==attempt:
 						guess[x]=attempt #insert guess letter to storage to print
 				if not '-' in guess:
 					break
 			else:
-				print('You did not guessed right :< Try again!\n')
+				guessrpl=2
 				attempts=attempts-1
 		if attempts==0:
 			game=input("You lost! Do you want to try again? Y=yes N=no: ")
 			if(game!="y"):
+				print("Bye bye! :)")
 				break
 		else:
 			game=input("You won! Do you want to try again? Y=yes N=no: ")
 			if(game!="y"):
+				print("Bye bye! :)")
 				break
 if __name__=="__main__":
 	main()
