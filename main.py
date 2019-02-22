@@ -32,6 +32,8 @@ def main():
 					print("You didn't guess right :< Try again!\n")
 				elif guessrpl == 3:
 					print('You choose already this letter! Try another one.\n')
+				elif guessrpl == 4:
+					print('You choose already this word! Try another one.\n')
 				print("Guess the word! You have",attempts,"attempts left\n")
 				print("\nLetters already used: ", letters,"\n")
 				print("\nWords tried: ",words,"\n")
@@ -45,9 +47,11 @@ def main():
 					else:
 						guessrpl = 3
 				else:
-					words.append(attempt)
-					break	
-				
+					if attempt not in words:
+						words.append(attempt)
+						break
+					else:
+						guessrpl = 4
 			#checking player guess
 			if len(attempt)>1:
 				if attempt == word:
