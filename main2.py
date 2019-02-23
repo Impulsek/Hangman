@@ -6,8 +6,10 @@ attempts = 11
 attempt = ""
 guessrpl = 0
 word = ""
+wordlen = 0
 
 def file():
+	global wordlen
 	global word
 
 	words=open("words.txt","r")
@@ -23,11 +25,14 @@ def game():
 	global attempt
 	global guessrpl
 	global word
+	global wordlen
 	
 	guess=[]
 	letters=[]
 	words=[]
 	file()
+	for character in word:
+			guess.append("-")
 	while attempts>0:
 		while True:
 			os.system('cls')

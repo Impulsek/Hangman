@@ -3,8 +3,14 @@ import random
 import os
 
 def main():
-	os.system('cls')
-	game=input("Do you want to play hangman? Y=yes N=no: ")
+	while True:
+		os.system("cls")
+		game=input("Do you want to play hangman? Y=yes N=no: ")
+		if game == "y":
+			break
+		elif game == "n":
+			print("Bye bye :)")
+			exit()
 	while(game=="y"):
 		#reading words from file
 		words=open("words.txt","r")
